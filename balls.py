@@ -1,6 +1,7 @@
 import ctypes
 import time
 from playsound import playsound
+import winsound
 
 def DetectClick(button, watchtime=5):
     if button in (1, '1', 'l', 'L', 'left', 'Left', 'LEFT'):
@@ -19,7 +20,8 @@ def DetectClick(button, watchtime=5):
 
 while True:
     if DetectClick(1):
-        playsound('C:\\Users\\samda\\Desktop\\sound\\scout_specialcompleted03.wav')
+        time.sleep(0.6)
+        winsound.PlaySound("C:\\Users\\samda\\Desktop\\sound\\scout_specialcompleted03.wav", winsound.SND_FILENAME)
         # wait for release to avoid multiple plays
         while ctypes.windll.user32.GetKeyState(0x01) < 0:
             time.sleep(0.01)
